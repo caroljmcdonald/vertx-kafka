@@ -1,6 +1,6 @@
-package com.cyngn.kafka.produce;
+package kafka.produce;
 
-import com.cyngn.kafka.config.ConfigConstants;
+import maprstreams.config.ConfigConstants;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.eventbus.Message;
@@ -16,8 +16,6 @@ import java.util.concurrent.Executors;
 
 /**
  * Module to listen for messages from vertx event bus and send them to Kafka defaultTopic.
- *
- * @author asarda@cyngn.com (Ajay Sarda) on 8/14/15.
  */
 public class MessageProducer extends AbstractVerticle {
     private KafkaProducer producer;

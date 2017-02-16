@@ -1,13 +1,12 @@
-package com.cyngn.kafka.consume;
+package kafka.consume;
 
-import com.cyngn.kafka.config.ConfigConstants;
+import maprstreams.config.ConfigConstants;
 import io.vertx.core.json.JsonObject;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 
 /**
  * Represents a Kafka message event from the event bus.
  *
- * @author truelove@cyngn.com (Jeremy Truelove) 11/30/15
  */
 public class KafkaEvent {
     public final String topic;

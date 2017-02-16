@@ -1,4 +1,4 @@
-package eu.fakod.streamprocessing.verticles
+package verticles
 
 import org.vertx.scala.platform.Verticle
 

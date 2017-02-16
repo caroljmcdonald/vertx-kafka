@@ -1,8 +1,8 @@
-package com.cyngn.kafka;
+package kafka;
 
-import com.cyngn.kafka.config.ConfigConstants;
-import com.cyngn.kafka.consume.KafkaEvent;
-import com.cyngn.kafka.consume.SimpleConsumer;
+import maprstreams.config.ConfigConstants;
+import kafka.consume.KafkaEvent;
+import kafka.consume.SimpleConsumer;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
 import io.vertx.core.eventbus.Message;
@@ -25,21 +25,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Basic test show how to consume messages from kafka and then publish them on the event bus.
  *
- * To run test you need to do the following
- *
- * 1) start zookeeper, ie from a kafka local install dir
- *      run: 'bin/zookeeper-server-start.sh  config/zookeeper.properties'
- * 2) start a message broker, ie from a kafka install dir
- *      run: 'bin/kafka-server-start.sh config/server.properties'
- * 3) setup a topic in kafka, ie from the kafka install dir
- *       run: 'bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 8 --topic testTopic'
- * 4) start the test (note it will time out and fail if it doesn't receive a message in 20 seconds)
- * 5) publish a message on the topic from the kafka CLI, ie from the kafka install dir
- *       run: bin/kafka-console-producer.sh --broker-list localhost:9092 --topic testTopic
- *       run: [type text and press enter]
- *
- *
- * @author truelove@cyngn.com (Jeremy Truelove) 2/19/15
+
  */
 @RunWith(VertxUnitRunner.class)
 public class SimpleConsumerTest {

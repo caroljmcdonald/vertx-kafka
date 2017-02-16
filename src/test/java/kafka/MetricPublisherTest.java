@@ -1,8 +1,8 @@
-package com.cyngn.kafka;
+package kafka;
 
-import com.cyngn.kafka.config.ConfigConstants;
-import com.cyngn.kafka.produce.KafkaPublisher;
-import com.cyngn.kafka.produce.MessageProducer;
+import maprstreams.config.ConfigConstants;
+import kafka.produce.KafkaPublisher;
+import kafka.produce.MessageProducer;
 import io.vertx.core.Vertx;
 import io.vertx.ext.unit.Async;
 import io.vertx.ext.unit.TestContext;
@@ -14,7 +14,6 @@ import org.junit.runner.RunWith;
 /**
  * Basic tests for the publisher helper.
  *
- * @author truelove@cyngn.com (Jeremy Truelove) 11/21/15
  */
 @RunWith(VertxUnitRunner.class)
 public class MetricPublisherTest {

@@ -12,3 +12,4 @@ build
 .settings/
 .idea
 gradle.properties
+/target/

@@ -12,9 +12,9 @@
  * See the License for the specific language governing permissions and
  *   limitations under the License.
  */
-package com.cyngn.kafka.consume;
+package kafka.consume;
 
-import com.cyngn.kafka.config.ConfigConstants;
+import maprstreams.config.ConfigConstants;
 import io.vertx.core.AbstractVerticle;
 import io.vertx.core.Future;
 import io.vertx.core.eventbus.EventBus;

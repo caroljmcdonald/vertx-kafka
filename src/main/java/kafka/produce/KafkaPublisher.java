@@ -1,6 +1,6 @@
-package com.cyngn.kafka.produce;
+package kafka.produce;
 
-import com.cyngn.kafka.config.ConfigConstants;
+import maprstreams.config.ConfigConstants;
 import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.json.JsonObject;
 import io.vertx.core.logging.Logger;
@@ -9,7 +9,6 @@ import io.vertx.core.logging.LoggerFactory;
 /**
  * Helper class for publishing kafka messages.
  *
- * @author truelove@cyngn.com (Jeremy Truelove) 11/19/15
  */
 public class KafkaPublisher {
     private static final Logger logger = LoggerFactory.getLogger(KafkaPublisher.class);

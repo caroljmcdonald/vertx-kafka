@@ -1,8 +1,8 @@
-package com.cyngn.kafka;
+package kafka;
 
-import com.cyngn.kafka.config.ConfigConstants;
-import com.cyngn.kafka.produce.KafkaPublisher;
-import com.cyngn.kafka.produce.MessageProducer;
+import maprstreams.config.ConfigConstants;
+import kafka.produce.KafkaPublisher;
+import kafka.produce.MessageProducer;
 import io.vertx.core.DeploymentOptions;
 import io.vertx.core.Vertx;
 import io.vertx.core.json.JsonObject;
@@ -21,18 +21,13 @@ import org.slf4j.LoggerFactory;
  *
  * To run test you need to do the following
  *
- * 1) start zookeeper, ie from a kafka local install dir
- *      run: 'bin/zookeeper-server-start.sh  config/zookeeper.properties'
- * 2) start a message broker, ie from a kafka install dir
- *      run: 'bin/kafka-server-start.sh config/server.properties'
- * 3) setup a topic in kafka, ie from the kafka install dir
- *       run: 'bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 8 --topic testTopic'
+
+ * 3) setup a topic 
+
  * 4) start the test (note it will time out and fail if it doesn't receive a message in 20 seconds)
- * 5) publish a message on the topic from the kafka CLI, ie from the kafka install dir
- *       run: bin/kafka-console-consumer.sh --topic testTopic --zookeeper localhost:2181
- *      You should see: This is the message you should see in your consumer
+ * 5) publish a message on the topic 
+ *    
  *
- * @author asarda@cyngn.com (Ajay Sarda) on 8/14/15.
  */
 @RunWith(VertxUnitRunner.class)
 public class MessageProducerTest {
