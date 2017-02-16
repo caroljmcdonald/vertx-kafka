@@ -1,0 +1,76 @@
+apply plugin: 'java'
+// Uncomment below when doing official builds
+//apply from: "gradle/sona.gradle"
+
+version = '3.3.0'
+group = "com.cyngn.vertx"
+archivesBaseName = "vertx-kafka"
+
+buildscript {
+    repositories { jcenter() }
+    dependencies {
+        classpath 'com.github.jengelman.gradle.plugins:shadow:1.1.1'
+    }
+}
+
+if (!JavaVersion.current().java8Compatible) {
+    throw new IllegalStateException('''A Haiku:
+                                      |  This needs Java 8,
+                                      |  You are using something else,
+                                      |  Refresh. Try again.'''.stripMargin())
+}
+
+repositories {
+    maven { url = 'https://maven.cyngn.com/artifactory/repo' }
+    mavenCentral()
+    maven { url = 'http://oss.sonatype.org/content/repositories/snapshots/' }
+ maven { url = 'http://repository.mapr.com/maven/' }
+}
+
+dependencies {
+  compile 'io.vertx:vertx-core:3.3.0-SNAPSHOT'
+  compile 'org.slf4j:log4j-over-slf4j:1.7.12'
+  compile ("org.apache.kafka:kafka-clients:0.9.0.0-mapr-1611-streams-5.2.0") {
+      exclude group: 'com.sun.jdmk', module: 'jmxtools'
+      exclude group: 'com.sun.jmx', module: 'jmxri'
+      exclude group: 'org.slf4j', module: 'slf4j-log4j12'
+      exclude group: 'log4j', module: 'log4j'
+  }
+  compile "io.vertx:vertx-codegen:3.3.0-SNAPSHOT"
+  testCompile "junit:junit:4.11"
+  testCompile "io.vertx:vertx-unit:3.3.0-SNAPSHOT"
+  testCompile "org.mockito:mockito-core:1.9.5"
+  testCompile "org.powermock:powermock-api-mockito:1.5.5"
+}
+
+def mainVerticle = "verticles.HelloWorldVerticle "
+mainClassName = "io.vertx.core.Starter"
+run {
+    args = ["run", mainVerticle]
+}
+
+task wrapper(type: Wrapper) {
+  gradleVersion = '3.1'
+}
+
+task release() << {}
+
+gradle.taskGraph.whenReady {taskGraph ->
+    if (!taskGraph.hasTask(release)) {
+        version += '-SNAPSHOT'
+    }
+}
+
+task javadocJar(type: Jar) {
+    classifier = 'javadoc'
+    from javadoc
+}
+
+task sourcesJar(type: Jar) {
+    classifier = 'sources'
+    from sourceSets.main.allSource
+}
+
+artifacts {
+    archives javadocJar, sourcesJar
+}
